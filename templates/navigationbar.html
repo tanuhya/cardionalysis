@@ -1,0 +1,103 @@
+{% load static %}
+<html>
+<head>
+  <title>Gym Management</title>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+
+</head>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a href="#" class="navbar-brand">Power Gym</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#abc">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="abc">
+    <ul class="navbar-nav">
+
+      {%if request.user.is_staff %}
+      <li class="nav-item"><a class="nav-link" href="{% url 'adminhome' %}">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'attendance' %}">Attendance</a></li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Enquiry</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_enquiry' %}">Add Enquiry</a>
+            <a class="dropdown-item" href="{% url 'view_enquiry' %}">View Enquiry</a>
+          </div>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Plan</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_plan' %}">Add Plan</a>
+            <a class="dropdown-item" href="{% url 'view_plan' %}">View Plan</a>
+          </div>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Equipment</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_equipment' %}">Add Equipment</a>
+            <a class="dropdown-item" href="{% url 'view_equipment' %}">View Equipment</a>
+          </div>
+      </li>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Member</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_member' %}">Add Member</a>
+            <a class="dropdown-item" href="{% url 'view_member' %}">View Member</a>
+          </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+      {%elif request.user.is_authenticated %}
+
+      <li class="nav-item"><a class="nav-link" href="{% url 'userhome' %}">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Attendance</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_attendance' %}">Add Attendance</a>
+          <a class="dropdown-item" href="{% url 'view_attendance' %}">View Attendance</a>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'usermember' %}">Register as member</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'logoutuser' %}">Logout</a></li>
+
+       {% elif not request.user.is_staff%}
+       <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">AdminLogin</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'loginuser' %}">UserLogin</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+ 
+       {% elif not request.user.is_authenticated %}
+       <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">AdminLogin</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'loginuser' %}">UserLogin</a></li>
+       <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+
+    </ul>
+  </div>
+</nav>
+</html>
+{% block body %}
+
+
+{% endblock %}
+
+
+
+
+

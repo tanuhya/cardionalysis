@@ -1,0 +1,59 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+	body {
+		background-image: radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+	}
+  
+	.container {
+		max-width: 550px;
+	}
+  
+	.has-error label,
+	.has-error input,
+	.has-error textarea {
+		color: red;
+		border-color: red;
+	}
+  
+	.list-unstyled li {
+		font-size: 13px;
+		padding: 4px 0 0;
+		color: red;
+	}
+  </style>
+	
+{% ifequal error "no" %}
+
+<script>
+    alert("Logged In Successfully!");
+    window.location=('{% url 'home' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Invalid Login Credentials, Please Try Again!")
+</script>
+{% endifequal %}
+
+<body>
+	<div class="container mt-5">
+		<div class="card">
+			<h5 class="card-header text-center">Admin Login</h5>
+			<div class="card-body">
+			<form method="post">
+				{% csrf_token %}
+				<label><b>Admin Name</b></label>
+				<input type="text" name="username" class="form-control">
+				<label><b>Password</b></label>
+				<input type="password" name="password" class="form-control">
+				<br>
+				<input type="submit" value="Login" class="form-control btn btn-primary">
+			</form>
+		</div>
+	</div>
+</body>
+{% endblock %}

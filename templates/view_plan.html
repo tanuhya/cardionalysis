@@ -1,0 +1,41 @@
+{% extends 'navigationbar.html' %}
+{% block body %}
+<style>
+    body{
+        background-image : radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+    }
+    .container{
+        background-image : radial-gradient(circle, #f3fcfa, #ffffff, rgb(246, 253, 255), #f9fdff, #ffffff);
+    }
+</style>
+<div class="container table-responsive" style="margin-top:60px">
+    <h2 class="text-center text-primary font-weight-bold">View Plan</h2>
+
+    <table id="example" class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Plan Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for i in plan %}
+
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.amount}}</td>
+            <td>{{i.duration}}</td>
+            <td><a class="btn btn-danger" href="{% url 'delete_plan' i.id %}" onclick="return confirm('Are you sure to delete?')">Delete</a> </td>
+        </tr>
+
+        {% endfor %}
+        <tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

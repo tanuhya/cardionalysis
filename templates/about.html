@@ -1,0 +1,60 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+  .column {
+    float: left;
+    width: 25%;
+    padding: 5px;
+  }
+  
+  /* Clear floats after image containers */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+    @media screen and (max-width: 500px) {
+      .column {
+        width: 100%;
+      }
+    }
+      body{
+          background-image : radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+      }
+      .container{
+          background-image : radial-gradient(circle, #f3fcfa, #ffffff, rgb(246, 253, 255), #f9fdff, #ffffff);
+      }
+  </style>
+  </head>
+  <body>
+    <br>
+    <div class="container text-center">
+    <h3>Power Gym</h3>
+    <p>DBMS Phase-2</p>
+    <p>We are the sudents of IIITDM have created a Gym Management website.</p>
+    <br>
+    <div class="row">
+      <div class="column">
+        <p>Radhika</p>
+        <img src="{% static "images/Radhika.jpeg" %}" alt="Snow" style="width:100%">
+      </div>
+      <div class="column">
+        <p>Nandita</p>
+        <img src="{% static "images/nandita.jpeg" %}" alt="Forest" style="width:100%">
+      </div>
+      <div class="column">
+        <p>Anuhya</p>
+        <img src="{% static "images/anuhya.jpeg" %}" alt="Mountains" style="width:100%">
+      </div>
+      <div class="column">
+        <p>Harshitha</p>
+        <img src="{% static "images/harshita.jpeg" %}" alt="Mountains" style="width:100%">
+      </div>
+    </div>
+  </div>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'navigationbar.html' %}
+{% block body %}
+<style>
+    body {
+        background-image: radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+    }
+
+    .container {
+        max-width: 550px;
+    }
+
+    .has-error label,
+    .has-error input,
+    .has-error textarea {
+        color: red;
+        border-color: red;
+    }
+
+    .list-unstyled li {
+        font-size: 13px;
+        padding: 4px 0 0;
+        color: red;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card">
+        <h5 class="card-header text-center">Add Plan</h5>
+        <div class="card-body">
+    <form method="post">
+        {% csrf_token %}
+        <label><b>Plan Name</b></label>
+        <input type="text" name="name" class="form-control" required>
+
+        <label><b>Amount(In Rs.)</b></label>
+        <input type="number" min="0" max="10000" name="amount" class="form-control" required>
+
+        <label><b>Duration(In Months)</b></label>
+        <input type="number" min="0" max="12" name="duration" class="form-control" required>
+        <br>
+        <input type="submit" value="Submit" class="form-control btn btn-primary">
+    </form>
+</div>
+</div>  
+
+
+
+{%  ifequal error "no" %}
+
+<script>
+    alert("Record Saved Successfully!");
+    window.location=('{% url 'view_plan' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Something Went Wrong, Please Try Again!");
+</script>
+{% endifequal %}
+
+
+
+{% endblock %}

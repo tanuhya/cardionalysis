@@ -1,0 +1,45 @@
+{% extends "navigationbar.html" %}
+
+{% block body %} 
+
+{% load crispy_forms_tags %}         
+<style>
+    body {
+        background-image: radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+    }
+
+    .container {
+        max-width: 550px;
+    }
+
+    .has-error label,
+    .has-error input,
+    .has-error textarea {
+        color: red;
+        border-color: red;
+    }
+
+    .list-unstyled li {
+        font-size: 13px;
+        padding: 4px 0 0;
+        color: red;
+    }
+</style>
+<!--Register--> 
+<body>
+	<div class="container mt-5">
+		<div class="card">
+			<h5 class="card-header text-center">Register</h5>
+			<div class="card-body">
+
+			<form method="POST">
+				{% csrf_token %}
+				{{ register_form|crispy }}                    
+				<button class="btn btn-primary" type="submit">Register</button>
+			</form>
+			<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+		</div>
+	</div>
+	<br>
+</body>
+{% endblock %}

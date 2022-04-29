@@ -1,0 +1,70 @@
+{% extends 'navigationbar.html' %}
+
+{% block body %}
+
+<style>
+    body{
+        background-image : radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+    }
+    .container{
+        background-image : radial-gradient(circle, #f3fcfa, #ffffff, rgb(246, 253, 255), #f9fdff, #ffffff);
+    }
+    .card{
+        margin:100px;
+    }
+    .card-text{
+        font-size: large;
+    }
+    .css-3d-text {
+         font-size: 106px;
+         color: #c4bda7;
+         font-family: Lucida Console;
+         text-shadow: 0px 0px 0 rgb(221, 219, 214),1px 1px 0 rgb(206, 205, 204),2px 2px  0 rgb(240, 240, 240),3px 3px 2px rgba(0,0,0,0.07),3px 3px 1px rgba(255, 245, 245, 0.5),0px 0px 2px rgba(255, 251, 251, 0.2);
+         text-align: center;
+    }
+
+</style>
+<body>
+<div class="css-3d-text">Power Gym</div>
+
+<div class="card-deck">
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text"><b>Enquiry</b></p>
+        <a href="{%url 'view_enquiry'%}" class=""><h3>{{e1}}</h3></a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text"><b>Equipment</b></p>
+        <a href="{%url 'view_equipment'%}" class=""><h3>{{eq1}}</h3></a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text"><b>Plans</b></p>
+        <a href="{%url 'view_plan'%}" class=""><h3>{{p1}}</h3></a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text"><b>Members</b></p>
+        <a href="{%url 'view_member'%}" class=""><h3>{{m1}}</h3></a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text"><b>Amount</b></p>
+        <a href="{%url 'view_member'%}" class=""><h3>{{amount}}</h3></a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text"><b>Amount Spent</b></p>
+        <a href="{%url 'view_member'%}" class=""><h3>{{spent}}</h3></a>
+      </div>
+    </div>
+</div> 
+</body>
+
+{% endblock %}

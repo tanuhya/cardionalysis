@@ -1,0 +1,72 @@
+{% extends 'navigationbar.html' %}
+{% block body %}
+<style>
+    body {
+        background-image: radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+    }
+
+    .container {
+        max-width: 550px;
+    }
+
+    .has-error label,
+    .has-error input,
+    .has-error textarea {
+        color: red;
+        border-color: red;
+    }
+
+    .list-unstyled li {
+        font-size: 13px;
+        padding: 4px 0 0;
+        color: red;
+    }
+</style>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <h5 class="card-header text-center">Add Enquiry</h5>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control"  required>
+
+                    <label>Contact</label>
+                    <input type="number" name="contact" minlength="10" maxlength="10" class="form-control"  required>
+
+                    <label>EmailID</label>
+                    <input type="email" name="emailid" class="form-control" required>
+
+                    <label>Age</label>
+                    <input type="number" min="10" max="70" name="age" class="form-control" required>
+
+                    <label>Gender</label>
+                    <input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" value="female">Female
+
+                    <input type="submit" value="Submit" class="form-control btn btn-primary">
+                </form>
+            </div>
+            </div>
+</body>
+
+
+
+{%  ifequal error "no" %}
+
+<script>
+    alert("Record Saved Successfully!");
+    window.location=('{% url 'view_enquiry' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Something Went Wrong, Please Try Again!");
+</script>
+{% endifequal %}
+
+
+
+{% endblock %}

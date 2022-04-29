@@ -1,0 +1,14 @@
+.nav-link{
+    color: white ;
+}
+
+hr.rounded{
+    border-top: 8px solid ligthblue;
+    border-radius: 5px;
+}
+
+.mydivstyle:hover{
+    box-shadow:0 0 20px 0 rgba(0,0,0,0.3);
+    transform:translate(-20px)
+}
+

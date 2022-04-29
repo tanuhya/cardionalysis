@@ -1,0 +1,62 @@
+{% extends "navigationbar.html" %}
+{% block body %} 
+<style>
+    body{
+        background-image : radial-gradient(circle, #416860, #3c5c5d, #3b5056, #3b454b, #383a3d);
+        text-align: center;
+    }
+    .container{
+        background-image : radial-gradient(circle, #f3fcfa, #ffffff, rgb(246, 253, 255), #f9fdff, #ffffff);
+    }
+
+</style>
+<body>
+    <div class="container table-responsive" style="margin-top:60px">
+        <h2 class="text-center text-primary font-weight-bold">Profile Information</h2>
+        <table id="example" class="table table-striped">
+            {% for i in member %}
+            <tr>
+                <th scope="col">Name</th>
+                <td>{{i.name}}</td>
+            </tr>
+            <tr>          
+                <th scope="col">Contact</th>
+                <td>{{i.contact}}</td> 
+            </tr>  
+            <tr>          
+                <th scope="col">EmailID</th>  
+                <td>{{i.emailid}}</td>    
+            </tr>  
+            <tr>
+                <th scope="col">Age</th>        
+                <td>{{i.age}}</td>
+            </tr>  
+            <tr>
+                <th scope="col">Gender</th>      
+                <td>{{i.gender}}</td>
+            </tr>  
+            <tr>
+                <th scope="col">Plan Name</th>   
+                <td>{{i.plan}}</td>  
+            </tr> 
+            <tr> 
+                <th scope="col">Join Date</th>   
+                <td>{{i.joindate}}</td>
+            </tr> 
+            <tr>
+                <th scope="col">Expire Date</th>    
+                <td>{{i.expiredate}}</td>
+            </tr>  
+            <tr>
+                <th scope="col">Initial Amount</th>    
+                <td>{{i.initialamount}}</td>
+                            
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+{% endblock %}
+
+
